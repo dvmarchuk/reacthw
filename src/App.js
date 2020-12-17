@@ -8,7 +8,19 @@ import User from "./User";
 
 class App extends Component{
 
+    state = {users: []};
+
+    componentDidMount() {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(value => value.json())
+            .then(users => {
+                this.setState({users})
+            }
+    }
+
     render() {
+
+        let {users} = this.state;
         return (
             <div>
                 {
