@@ -3,22 +3,15 @@ import './User.css'
 
 class User extends Component{
 
-    state = {customClass: ''}
-
     render(){
-        let {age,name,status} = this.props;
-        let {customClass} = this.state;
-        return(<div className={customClass}>
-            {age} -
-            {name} -
-            {status.toString()}
-            <button onClick={this.doCheck}>Execute</button>
+        let {item} = this.props;
+        return (<div>
+            {item.userId} -
+            {item.id} -
+            {item.title} -
+            {item.body}
         </div>);
     }
-
-    doCheck = () => {
-        this.setState({customClass: 'change'})
-    };
 }
 
 export default User;

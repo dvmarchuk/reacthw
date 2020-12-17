@@ -1,30 +1,28 @@
 import React, {Component} from 'react';
-import {users} from './database';
 import User from "./User";
 
 
-//2nd part with json database with post+comments
 
 
 class App extends Component{
 
-    state = {users: []};
+    state = {posts: []};
 
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch('https://jsonplaceholder.typicode.com/posts')
             .then(value => value.json())
-            .then(users => {
-                this.setState({users})
-            }
+            .then(posts => {
+                this.setState({posts})
+            });
     }
 
     render() {
 
-        let {users} = this.state;
+        let {posts} = this.state;
         return (
             <div>
                 {
-                    users.map((user, index) => <User {...user} key={index}/>)
+                    posts.map((post, index) => <User item={post} key={post.userId}/>)
                 }
             </div>
         );
